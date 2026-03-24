@@ -31,13 +31,15 @@ export async function updateSession(request: NextRequest) {
   const { data: { user } } = await supabase.auth.getUser()
   
   const pathname = request.nextUrl.pathname
-  const isAuthRoute = pathname.startsWith('/login') || pathname.startsWith('/signup')
-  const isAdminRoute = pathname.startsWith('/admin')
+  const isAuthRoute = pathname.startsWith('/login') || pathname.startsWith('/signup') || pathname === '/admin/login'
+  const isAdminLoginRoute = pathname === '/admin/login'
+  const isAdminRoute = pathname.startsWith('/admin') && !isAdminLoginRoute
   const isUserRoute = pathname.startsWith('/dashboard')
   
+  // If NOT logged in and trying to access protected routes → redirect to login
   if (!user && (isAdminRoute || isUserRoute)) {
     const url = request.nextUrl.clone()
-    url.pathname = '/login'
+    url.pathname = isAdminRoute ? '/admin/login' : '/login'
     return NextResponse.redirect(url)
   }
 
@@ -45,7 +47,6 @@ export async function updateSession(request: NextRequest) {
     if (isAuthRoute || pathname === '/') {
       const { data: profile } = await supabase.from('users_profile').select('role').eq('id', user.id).single()
       const role = profile?.role || 'user'
-      
       const url = request.nextUrl.clone()
       url.pathname = role === 'admin' ? '/admin/dashboard' : '/dashboard'
       return NextResponse.redirect(url)
