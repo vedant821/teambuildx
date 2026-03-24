@@ -29,8 +29,67 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+
+**Team Name:** BuildX  
+
+### 👨‍💻 Team Members:
+- Vedant Madhukar Khade  
+- Harshal Dafe  
+- Piyush Gudhe  
+- Prajwal Kurwade  
+
+---
+
+## ⚙️ Tech Stack
+- DevOps  
+- GitHub Actions  
+- Frontend
+React 18, Tailwind CSS, Framer Motion
+
+- Backend
+Supabase (Auth, PostgreSQL, Storage)
+
+- Payment Method
+Register → Show QR → User Pays → Upload Screenshot 
+→ Admin Verifies
+
+
+## Feasibility & Viability
+- Designed with practical implementation in mind  
+- Scalable and adaptable for different types of events  
+
+## Impact & Benefits
+- Simplifies event organization  
+- Improves efficiency and coordination  
+- Provides a flexible solution for users  
+
+---
+
+## Features (Add if needed)
+- Event creation & management  
+- User-friendly interface  
+- Automation using GitHub Actions  
+
+---
+
+##  Future Scope
+- Add real-time collaboration  
+- Integrate analytics dashboard  
+- Enhance UI/UX  
+
+---
+
+##  Project Status
+🚧 In Development / Hackathon Prototype  
+
+---
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+
+
