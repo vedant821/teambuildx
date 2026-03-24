@@ -1,0 +1,33 @@
+-- Create Profiles Table
+CREATE TABLE users_profile (
+  id UUID REFERENCES auth.users NOT NULL PRIMARY KEY,
+  full_name TEXT NOT NULL,
+  role TEXT DEFAULT 'user',
+  skills TEXT
+);
+
+-- Create Events Table
+CREATE TABLE events (
+  id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  title TEXT NOT NULL,
+  description TEXT,
+  date TIMESTAMP WITH TIME ZONE,
+  is_paid BOOLEAN DEFAULT false,
+  upi_id TEXT,
+  fee_amount NUMERIC,
+  created_by UUID REFERENCES users_profile(id)
+);
+
+-- Create Registrations Table
+CREATE TABLE registrations (
+  id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  user_id UUID REFERENCES users_profile(id),
+  event_id UUID REFERENCES events(id),
+  status TEXT DEFAULT 'pending',
+  transaction_id TEXT,
+  screenshot_url TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Create Storage Bucket for Payment Screenshots
+insert into storage.buckets (id, name, public) values ('payment_proofs', 'payment_proofs', true);
